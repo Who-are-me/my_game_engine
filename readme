@@ -1,0 +1,25 @@
+////////////////////////////////
+// --- create 23.06.2021  --- //
+////////////////////////////////
+
+author Storchak Vasil
+
+gmail - vasyastorchak74@gmail.com
+
+github - Who-are-me/my_game_engine
+
+//////////////////////
+// --- install  --- //
+//////////////////////
+
+git submodule update --init
+
+cmake CMakeLists.txt
+
+make
+
+//////////////////
+// --- Run  --- //
+//////////////////
+
+./bin/game_editor
