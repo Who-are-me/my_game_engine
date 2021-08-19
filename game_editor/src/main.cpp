@@ -11,7 +11,7 @@ class MyApp : public MatrixEngine::Application {
     int frame = 0;
 
     virtual void onUpdate() override {
-        //std::cout << "Update frame: " << frame++ << std::endl;
+        std::cout << "Update frame: " << frame++ << std::endl;
     }
 };
 

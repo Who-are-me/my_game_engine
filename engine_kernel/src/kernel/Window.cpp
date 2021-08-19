@@ -3,6 +3,7 @@
 
 #include "kernel/Window.hpp"
 #include "kernel/Log.hpp"
+#include "kernel/Rendering/OpenGL/ShaderProgram.hpp"
 
 #include <imgui/imgui.h>
 #include <imgui/backends/imgui_impl_opengl3.h>
@@ -42,7 +43,7 @@ namespace MatrixEngine {
         "   frag_color = vec4(color, 1.0);"
         "}";
 
-    GLuint shader_program;
+    std::unique_ptr<ShaderProgram> p_shader_program;
     GLuint vao;
 
     Window::Window(std::string title, const unsigned int width, const unsigned int height)
@@ -134,6 +135,11 @@ namespace MatrixEngine {
             }
         );
 
+        p_shader_program = std::make_unique<ShaderProgram>(vertex_shader, fragment_shader);
+        if(!p_shader_program->isCompiled()) {
+            return false;
+        }
+/*
         GLuint vs = glCreateShader(GL_VERTEX_SHADER);                   // init and compile vertex shader, vs - id vertex shader
         glShaderSource(vs, 1, &vertex_shader, nullptr);                 // load source code shader, vs - id, 1 - count lines, adders sourse, nullptr
         glCompileShader(vs);                                            // compile shader
@@ -149,7 +155,7 @@ namespace MatrixEngine {
 
         glDeleteShader(vs);                                             // delete vertex shader
         glDeleteShader(fs);                                             // delete fragment shader
-
+*/
                                                                         // vbo - vertex buffer object
         GLuint points_vbo = 0;
         glGenBuffers(1, &points_vbo);                                                       // 1 - number buffers, create id for points vbo
@@ -180,7 +186,7 @@ namespace MatrixEngine {
         glClearColor(m_background_color[0], m_background_color[1], m_background_color[2], m_background_color[3]);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glUseProgram(shader_program);                                   // include shader program
+        p_shader_program->bind();                                       // old(include shader program)
         glBindVertexArray(vao);                                         // bind vao (vertex array object have all bind data and shader)
         glDrawArrays(GL_TRIANGLES, 0, 3);                               // command draw on window, what, position start draw(vertex), count vertex
 
