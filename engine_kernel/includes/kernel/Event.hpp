@@ -20,10 +20,12 @@ namespace MatrixEngine {
         EventsCount
     };
 
+
     struct BaseEvent {
         virtual ~BaseEvent() = default;
         virtual EventType getType() const = 0;
     };
+
 
     class EventDispatcher {
         std::array<std::function<void(BaseEvent&)>, static_cast<size_t>(EventType::EventsCount)> m_eventCallbacks;
@@ -46,6 +48,7 @@ namespace MatrixEngine {
         }
     };
 
+
     struct EventMouseMoved : public BaseEvent {
 
         static const EventType type = EventType::MouseMoved;
@@ -53,7 +56,8 @@ namespace MatrixEngine {
         double y;
 
         EventMouseMoved(const double new_x, const double new_y)
-            : x(new_x) , y(new_y) {
+            : x(new_x) , y(new_y)
+        {
 
         }
 
@@ -62,6 +66,7 @@ namespace MatrixEngine {
         }
 
     };
+
 
     struct EventWindowResize : public BaseEvent {
 
@@ -70,7 +75,8 @@ namespace MatrixEngine {
         unsigned int height;
 
         EventWindowResize(const unsigned int new_width, const unsigned int new_height)
-            : width(new_width) , height(new_height) {
+            : width(new_width) , height(new_height)
+        {
 
         }
 
@@ -78,6 +84,7 @@ namespace MatrixEngine {
             return type;
         }
     };
+
 
     struct EventWindowClose : public BaseEvent {
 

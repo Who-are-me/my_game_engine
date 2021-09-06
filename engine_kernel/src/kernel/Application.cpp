@@ -5,7 +5,6 @@
 #include "kernel/Application.hpp"
 #include "kernel/Log.hpp"
 #include "kernel/Window.hpp"
-#include "kernel/Event.hpp"
 
 namespace MatrixEngine {
 
