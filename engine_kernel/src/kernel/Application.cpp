@@ -6,15 +6,18 @@
 #include "kernel/Log.hpp"
 #include "kernel/Window.hpp"
 
-namespace MatrixEngine {
 
+namespace MatrixEngine
+{
     Application::Application() {
         LOG_INFO("Application to start!");
     }
 
+
     Application::~Application() {
         LOG_INFO("Application to destroyed!");
     }
+
 
     int Application::start(unsigned int window_width, unsigned int window_height, const char* title) {
         m_pWindow = std::make_unique<Window>(title, window_width, window_height);
@@ -52,6 +55,7 @@ namespace MatrixEngine {
 
         return 0;
     }
+
 
     void Application::onUpdate() {
 

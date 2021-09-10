@@ -1,13 +1,14 @@
+#pragma once
+
 //
 // Created by forever on 04.07.21.
 //
 
-#pragma once
-
 #include <spdlog/spdlog.h>
 
-namespace MatrixEngine {
 
+namespace MatrixEngine
+{
 #ifdef NDEBUG
     #define LOG_INFO(...)
     #define LOG_WARN(...)

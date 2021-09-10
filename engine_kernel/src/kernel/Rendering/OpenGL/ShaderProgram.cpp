@@ -1,13 +1,13 @@
-#include "ShaderProgram.hpp"
-
-#include "kernel/Log.hpp"
-
 #include <glad/glad.h>
 
-namespace MatrixEngine {
 
+#include "ShaderProgram.hpp"
+#include "kernel/Log.hpp"
+
+
+namespace MatrixEngine
+{
     bool createShader(const char* source, const GLenum shader_type, GLuint& shader_id) {
-
         shader_id = glCreateShader(shader_type);
         glShaderSource(shader_id, 1, &source, nullptr);
         glCompileShader(shader_id);
@@ -24,11 +24,12 @@ namespace MatrixEngine {
             LOG_CRITICAL("Shader compilation error:\n{}", info_log);
             return false;
         }
+
         return true;
     }
 
-    ShaderProgram::ShaderProgram(const char* vertex_shader_src, const char* fragment_shader_src) {
 
+    ShaderProgram::ShaderProgram(const char* vertex_shader_src, const char* fragment_shader_src) {
         GLuint vertex_shader_id = 0;
 
         if(!createShader(vertex_shader_src, GL_VERTEX_SHADER, vertex_shader_id)) {
@@ -75,17 +76,21 @@ namespace MatrixEngine {
         glDeleteShader(fragment_shader_id);
     }
 
+
     ShaderProgram::~ShaderProgram() {
         glDeleteProgram(m_id);
     }
+
 
     void ShaderProgram::bind() {
         glUseProgram(m_id);
     }
 
+
     void ShaderProgram::unbind() {
         glUseProgram(0);
     }
+
 
     MatrixEngine::ShaderProgram & ShaderProgram::operator=(MatrixEngine::ShaderProgram && shaderProgram) {
         glDeleteShader(m_id);
@@ -97,19 +102,19 @@ namespace MatrixEngine {
         return *this;
     }
 
+
     ShaderProgram::ShaderProgram(MatrixEngine::ShaderProgram&& shaderProgram) {
         m_id = shaderProgram.m_id;
         m_isCompiled = shaderProgram.m_isCompiled;
 
         shaderProgram.m_id = 0;
         shaderProgram.m_isCompiled = false;
-
     }
+
 
     bool ShaderProgram::isCompiled() const {
         return m_isCompiled;
     }
-
 }
 
 

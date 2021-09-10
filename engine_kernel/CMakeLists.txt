@@ -12,11 +12,13 @@ set(ENGINE_PRIVATE_SOURCES
         src/kernel/Application.cpp
         src/kernel/utils/test.cpp
         src/kernel/Window.cpp
-        src/kernel/Rendering/OpenGL/ShaderProgram.cpp)
+        src/kernel/Rendering/OpenGL/ShaderProgram.cpp
+        src/kernel/Rendering/OpenGL/VertexBuffer.cpp)
 
 set(ENGINE_PRIVATE_INCLUDES
         src/kernel/Window.hpp
-        src/kernel/Rendering/OpenGL/ShaderProgram.hpp)
+        src/kernel/Rendering/OpenGL/ShaderProgram.hpp
+        src/kernel/Rendering/OpenGL/VertexBuffer.hpp)
 
 set(ENGINE_ALL_SOURCES
         ${ENGINE_PUBLIC_INCLUDES}

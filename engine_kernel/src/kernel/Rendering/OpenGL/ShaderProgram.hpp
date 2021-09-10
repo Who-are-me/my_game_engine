@@ -1,8 +1,9 @@
 #pragma once
 
-namespace MatrixEngine {
-    class ShaderProgram {
-
+namespace MatrixEngine
+{
+    class ShaderProgram
+    {
         bool m_isCompiled = false;
         unsigned int m_id = 0;
 

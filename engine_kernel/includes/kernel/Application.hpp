@@ -1,17 +1,19 @@
+#pragma once
+
 //
 // Created by forever on 04.07.21.
 //
 
-#pragma once
-
 #include <memory>
+
 
 #include "Event.hpp"
 
-namespace MatrixEngine {
 
-    class Application {
-
+namespace MatrixEngine
+{
+    class Application
+    {
         std::unique_ptr<class Window> m_pWindow;
         EventDispatcher m_event_dispatcher;
         bool m_bCloseWindow = false;
